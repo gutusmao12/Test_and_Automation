@@ -1,0 +1,26 @@
+package POO;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import util.CurrencyConverter;
+
+public class Câmbio {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Bom dia! \nA atual cotação do dólar em relação ao real está em: " + CurrencyConverter.dolar +  "\nEntre com o valor que deseja ter em dólares: ");
+		double dol = sc.nextDouble();
+		
+		double real = CurrencyConverter.taxaCambio(dol);
+		
+		System.out.printf("O preço em reais para obter esse valor fica: %.2f%n", real);
+		
+		sc.close();
+	}
+
+}

@@ -1,0 +1,30 @@
+package POO;
+
+import java.util.Scanner;
+
+public class vini {
+	public static void main(String[] args) {
+		
+		double primeiroNum;
+		int segundoNum;
+		double r2;
+		double r1;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Indique o primeiro número: ");
+		primeiroNum = sc.nextInt();
+		System.out.println("Indique o segundo número: ");
+		segundoNum = sc.nextInt();
+		
+		r1 = primeiroNum % 10;
+		while(primeiroNum > 0) {
+			r2 = primeiroNum % 10;
+			if(r2 != r1) {
+				System.out.println("falso");
+				primeiroNum = Math.floor(primeiroNum / 10);
+			}
+				
+		}
+	}
+}

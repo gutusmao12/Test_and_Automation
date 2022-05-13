@@ -1,0 +1,5 @@
+package br.com.sonhodepapelaria.www.seguranca;
+
+public class UsuarioDetailsServiceImpl {
+
+}

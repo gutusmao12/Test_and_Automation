@@ -1,0 +1,22 @@
+package POO;
+
+public class vini {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int primeiroNum[] = null;
+		int segundoNum [] = null;
+		int contador = 0;
+		
+		for(int i = 0; i < primeiroNum.length; i++) {
+			for(int j = 0; j < segundoNum.length; j++) {
+				if(primeiroNum[i] != segundoNum[j]) {
+					contador++;
+				}
+			}
+		}
+		return;
+	}
+
+}

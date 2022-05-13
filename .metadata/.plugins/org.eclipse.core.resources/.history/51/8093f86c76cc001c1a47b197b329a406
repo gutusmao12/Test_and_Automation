@@ -1,0 +1,87 @@
+package com.herokuapp.theinternet;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class NegativeTests {
+
+	@Parameters({ "username", "password", "expectedMessage" })
+	@Test(priority = 1)
+	public void negativeLoginTest(String username, String password, String expectedMessage) {
+		// Create driver
+		System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+
+		// open test page
+		String url = "http://the-internet.herokuapp.com/login";
+		driver.get(url);
+
+		// maximize browser window
+		driver.manage().window().maximize();
+
+		// enter username
+		WebElement username = driver.findElement(By.id("username"));
+		username.sendKeys("incorrectUsername");
+
+		// enter password
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("SuperSecretPassword!");
+
+		// click login button
+		WebElement logInButton = driver.findElement(By.tagName("button"));
+		logInButton.click();
+
+		// verifications
+		WebElement errorMessage = driver.findElement(By.id("flash"));
+		String expectedErrorMessage = "Your username is invalid!";
+		String actualErrorMessage = errorMessage.getText();
+		Assert.assertTrue(actualErrorMessage.contains(expectedErrorMessage),
+				"Actual error message does not contain expected. \nActual: " + actualErrorMessage + "\nExpected: "
+						+ expectedErrorMessage);
+
+		// close browser
+		driver.quit();
+
+	}
+
+	/*
+	 * @Test(priority = 2) public void incorrectPasswordTest() { // Create driver
+	 * System.setProperty("webdriver.chrome.driver",
+	 * "src/main/resources/chromedriver.exe"); WebDriver driver = new
+	 * ChromeDriver();
+	 * 
+	 * // open test page String url = "http://the-internet.herokuapp.com/login";
+	 * driver.get(url);
+	 * 
+	 * // maximize browser window driver.manage().window().maximize();
+	 * 
+	 * // enter username WebElement username =
+	 * driver.findElement(By.id("username")); username.sendKeys("tomsmith");
+	 * 
+	 * // enter password WebElement password =
+	 * driver.findElement(By.name("password"));
+	 * password.sendKeys("incorrectPassword!");
+	 * 
+	 * // click login button WebElement logInButton =
+	 * driver.findElement(By.tagName("button")); logInButton.click();
+	 * 
+	 * // verifications WebElement errorMessage =
+	 * driver.findElement(By.id("flash")); String expectedErrorMessage =
+	 * "Your password is invalid!"; String actualErrorMessage =
+	 * errorMessage.getText();
+	 * Assert.assertTrue(actualErrorMessage.contains(expectedErrorMessage),
+	 * "Actual error message does not contain expected. \nActual: " +
+	 * actualErrorMessage + "\nExpected: " + expectedErrorMessage);
+	 * 
+	 * // close browser driver.quit();
+	 * 
+	 * }
+	 */
+
+}

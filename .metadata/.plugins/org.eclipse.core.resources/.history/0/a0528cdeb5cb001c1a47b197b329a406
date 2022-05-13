@@ -1,0 +1,15 @@
+package com.herokuapp.theinternet;
+
+import org.testng.annotations.Test;
+
+public class NegativeTestes {
+	
+	public void NegativeTests {
+		
+		@Test
+		public void incorrectUsernameTest() {
+			
+		}
+	}
+
+}

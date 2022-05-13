@@ -1,0 +1,16 @@
+package POO;
+
+public class vini {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		boolean digitosIguais(Long numero) {
+		    char[] digitos = numero.toString().toCharArray();
+		    for (int i = 1; i < digitos.length; i++) {
+		        if (digitos[0] != digitos[i]) return false;
+		    }
+		    return true;
+		}
+	}
+
+}
